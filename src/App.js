@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
-
+import IconButton from "./component/iconbutton";
+import React, { useEffect, useState } from "react";
 function App() {
+
+  const existingTheme =
+    localStorage.getItem("userPastSelection")
+      ? localStorage.getItem("userPastSelection")
+      : window.matchMedia("(prefers-color-scheme: light)").matches === true
+      ? "light"
+      : "dark";
+
+    const [theme, setTheme] = useState(existingTheme);
+    
+    const toggleTheme = (()=>{
+        setTheme(theme === 'light' ? 'dark' : 'light');
+      })
+      
+      useEffect(()=>{
+        document.body.setAttribute("data-bs-theme",theme)
+        localStorage.setItem("userPastSelection",theme);
+    },[theme])
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col-12">
+          <IconButton theme={theme} toggleTheme={toggleTheme}/>
+          {/* <Main/> */}
+        </div>
+      </div>
     </div>
   );
 }
