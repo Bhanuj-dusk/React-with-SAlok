@@ -1,5 +1,6 @@
 import React, {useContext } from "react";
-import { ThemeContext } from "../../App";
+// import { ThemeContext } from "../../App";
+import { ThemeContext } from "../../context/themeContext";
 
 const IconButton = () => {
   const {theme, toggleTheme} = useContext(ThemeContext)
@@ -26,7 +27,7 @@ const IconButton = () => {
     <button className= {`btn btn-outline-${theme === 'dark' ? 'light' : 'dark'}`} onClick={toggleTheme}>set theme to {theme === 'dark' ? 'light' : 'dark'} </button>
     <div>
     Now the theme is {theme}
-  </div>
+    </div>
   </>
   )
 };
