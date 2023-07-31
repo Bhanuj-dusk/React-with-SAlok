@@ -1,5 +1,7 @@
 import IconButton from "./component/iconbutton";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, createContext } from "react";
+
+export const ThemeContext = createContext()
 function App() {
 
   const existingTheme =
@@ -25,7 +27,9 @@ function App() {
     <div className="container-fluid">
       <div className="row">
         <div className="col-12">
-          <IconButton theme={theme} toggleTheme={toggleTheme}/>
+          <ThemeContext.Provider value={{theme, toggleTheme}}>
+              <IconButton/>
+          </ThemeContext.Provider>
           {/* <Main/> */}
         </div>
       </div>

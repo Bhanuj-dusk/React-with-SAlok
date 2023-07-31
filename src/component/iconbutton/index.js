@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, {useContext } from "react";
+import { ThemeContext } from "../../App";
 
-const IconButton = ({theme, toggleTheme }) => {
-  // const modeHandler = () =>{
-  // modeHandler
-  // }
+const IconButton = () => {
+  const {theme, toggleTheme} = useContext(ThemeContext)
 
   // console.log("theme", theme)
   // console.log(toggleTheme.toString())
